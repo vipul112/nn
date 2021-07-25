@@ -125,41 +125,43 @@ function App() {
           <br />
 
           {/* <li>{InputList}</li>*/}
-          {Items.map((itemval, index) => {
-            return (
-              <div key={index}>
-                <br />
-                {itemval ? (
-                  <div className="item" key={itemval.id}>
+          {Items && Items.map
+            ? Items.map((itemval, index) => {
+                return (
+                  <div key={index}>
+                    <br />
                     {itemval ? (
-                      <button
-                        className="btn btn-danger"
-                        onClick={() => {
-                          deleteItems(itemval.id);
-                        }}
-                      >
-                        Delete
-                      </button>
-                    ) : null}
-                    &nbsp;&nbsp;
-                    {itemval ? <strong>{itemval.name}</strong> : "ff"}
-                    &nbsp;&nbsp;
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => {
-                        editItem(itemval.id);
-                      }}
-                    >
-                      Edit
-                    </button>
+                      <div className="item" key={itemval.id}>
+                        {itemval ? (
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => {
+                              deleteItems(itemval.id);
+                            }}
+                          >
+                            Delete
+                          </button>
+                        ) : null}
+                        &nbsp;&nbsp;
+                        {itemval ? <strong>{itemval.name}</strong> : "ff"}
+                        &nbsp;&nbsp;
+                        <button
+                          className="btn btn-primary"
+                          onClick={() => {
+                            editItem(itemval.id);
+                          }}
+                        >
+                          Edit
+                        </button>
+                      </div>
+                    ) : (
+                      "gg"
+                    )}
+                    <br />
                   </div>
-                ) : (
-                  "gg"
-                )}
-                <br />
-              </div>
-            );
-          })}
+                );
+              })
+            : null}
         </div>
       </center>
     </div>
