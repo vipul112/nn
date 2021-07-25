@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 const getLocalItems = () => {
-  let list = localStorage.getItem("lists");
-  if (list) {
-    return JSON.parse(localStorage.getItem("lists"));
+  const list = localStorage.getItem("lists");
+  if (!list || list === "undefined") return [];
+  try {
+    return JSON.parse(list) || [];
+  } catch (error) {
+    return [];
   }
 };
 function App() {
